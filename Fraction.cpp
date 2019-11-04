@@ -4,6 +4,29 @@
 #include "pch.h"
 #include "Fraction.h"
 
+Fraction operator+(const Fraction& lhs, const Fraction& rhs)
+{
+	const auto new_num = lhs.num_ * rhs.denom_ + rhs.num_ * lhs.denom_;
+	
+	return Fraction(new_num ,lhs.denom_ * rhs.denom_);
+}
+
+Fraction operator-(const Fraction& lhs, const Fraction& rhs)
+{
+	const auto new_num = lhs.num_ * rhs.denom_ - rhs.num_ * lhs.denom_;
+
+	return Fraction(new_num, lhs.denom_ * rhs.denom_);
+}
+
+Fraction operator*(const Fraction& lhs, const Fraction& rhs)
+{
+	const auto new_num = lhs.num_ * rhs.num_;
+	const auto new_denom = lhs.denom_ * rhs.denom_;
+
+	// Constructor simplifies the expression
+	return Fraction(new_num, new_denom);
+}
+
 std::ostream& operator<<(std::ostream& os, const Fraction& obj)
 {
 	return os << obj.num_ << "/" << obj.denom_ << std::endl;

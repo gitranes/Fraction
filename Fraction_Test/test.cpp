@@ -23,6 +23,9 @@ namespace FractionTest
 		ASSERT_EQ(quarter, quarter_);
 
 		ASSERT_DEATH(Fraction(1, 0), "^Assertion failed");
+
+		using rhalf = std::ratio<1, 2>;
+		using rhalf2 = std::ratio<1, 2>;
 	}
 
 	TEST_F(FractionTest, SumTest)

@@ -5,54 +5,22 @@
 class Fraction
 {
 public:
-	explicit constexpr Fraction(const int numerator, const int denominator) :
+	explicit Fraction(const int numerator, const int denominator) :
 		num_(numerator), denom_(denominator)
 	{
 		assert(denominator != 0);
+		simplify();
 	}
 	constexpr Fraction(const int numerator) :
 		num_(numerator), denom_(1)
 	{}
 
-	// Arithmetic operators. constexpr are implicitly inline
-
-	constexpr friend Fraction operator+(
-		const Fraction& lhs, const Fraction& rhs)
-	{
-		// least common multiple
-		const auto lcd = std::lcm(lhs.denom_, rhs.denom_);
-
-		const auto new_lhs = lcd * lhs;
-		const auto new_rhs = lcd * rhs;
-
-		const auto new_num = new_lhs.num_ + new_rhs.num_;
-
-		return Fraction(new_num, new_lhs.denom_);
-	}
-
-	constexpr friend Fraction operator-(
-		const Fraction& lhs, const Fraction& rhs)
-	{
-		// least common multiple
-		const auto lcd = std::lcm(lhs.denom_, rhs.denom_);
-
-		const auto new_lhs = lcd * lhs;
-		const auto new_rhs = lcd * rhs;
-
-		const auto new_num = new_lhs.num_ - new_rhs.num_;
-
-		return Fraction(new_num, new_lhs.denom_);
-	}
-
-	constexpr friend Fraction operator*(
-		const Fraction& lhs, const Fraction& rhs)
-	{
-		const auto new_num = lhs.num_ * rhs.num_;
-		const auto new_denom = lhs.denom_ * rhs.denom_;
-
-		// Constructor simplifies the expression
-		return Fraction(new_num, new_denom);
-	}
+	
+	// Arithmetic operators.
+	
+	friend Fraction operator+(const Fraction& lhs, const Fraction& rhs);
+	friend Fraction operator-(const Fraction& lhs, const Fraction& rhs);
+	friend Fraction operator*(const Fraction& lhs, const Fraction& rhs);
 
 	// Equality operators
 	friend bool operator==(const Fraction& lhs, const Fraction& rhs)
