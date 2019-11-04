@@ -11,7 +11,6 @@
 #include "framework.h"
 #include <numeric>
 #include <ostream>
-#include <ratio>
 #include <cassert>
 
 #endif //PCH_H

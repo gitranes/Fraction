@@ -11,11 +11,10 @@ public:
 		assert(denominator != 0);
 		simplify();
 	}
-	constexpr Fraction(const int numerator) :
+	constexpr Fraction(const int numerator) noexcept :
 		num_(numerator), denom_(1)
 	{}
 
-	
 	// Arithmetic operators.
 	
 	friend Fraction operator+(const Fraction& lhs, const Fraction& rhs);
@@ -23,12 +22,12 @@ public:
 	friend Fraction operator*(const Fraction& lhs, const Fraction& rhs);
 
 	// Equality operators
-	friend bool operator==(const Fraction& lhs, const Fraction& rhs)
+	friend bool operator==(const Fraction& lhs, const Fraction& rhs) noexcept
 	{
 		return lhs.num_ == rhs.num_ && lhs.denom_ == rhs.denom_;
 	}
 
-	friend bool operator!=(const Fraction& lhs, const Fraction& rhs)
+	friend bool operator!=(const Fraction& lhs, const Fraction& rhs) noexcept
 	{
 		return !(lhs == rhs);
 	}
@@ -38,7 +37,7 @@ public:
 
 private:
 	// Simplifies the fractional expression
-	void simplify();
+	void simplify() noexcept;
 
 	int num_;
 	int denom_;

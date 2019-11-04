@@ -32,7 +32,7 @@ std::ostream& operator<<(std::ostream& os, const Fraction& obj)
 	return os << obj.num_ << "/" << obj.denom_ << std::endl;
 }
 
-void Fraction::simplify()
+void Fraction::simplify() noexcept
 {
 	// Determine the sign of the Fraction
 	const auto sign_num = num_ < 0 ? -1 : 1;
