@@ -45,11 +45,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Fraction.vcxproj">
-      <Project>{22fdbcf6-6413-48f2-b89f-a55a23b429c7}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemDefinitionGroup />
@@ -72,7 +67,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <ImageHasSafeExceptionHandlers>true</ImageHasSafeExceptionHandlers>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
       <AdditionalLibraryDirectories>../Debug/</AdditionalLibraryDirectories>
       <AdditionalDependencies>Fraction.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
