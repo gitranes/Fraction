@@ -44,6 +44,7 @@ std::ostream& operator<<(std::ostream& os, const Fraction& obj)
 	return os << obj.num_ << "/" << obj.denom_ << std::endl;
 }
 
+
 void Fraction::simplify()
 {
 	// Determine the sign of the Fraction

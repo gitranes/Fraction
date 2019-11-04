@@ -2,13 +2,6 @@
 
 #include "pch.h"
 
-class Fraction;
-
-// Linker can't find friend functions otherwise
-constexpr Fraction operator+(const Fraction& lhs, const Fraction& rhs);
-constexpr Fraction operator-(const Fraction& lhs, const Fraction& rhs);
-constexpr Fraction operator*(const Fraction& lhs, const Fraction& rhs);
-
 class Fraction
 {
 public:
