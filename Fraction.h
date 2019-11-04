@@ -15,11 +15,23 @@ public:
 		num_(numerator), denom_(1)
 	{}
 
-	// Arithmetic operators.
+	// Can be cast to int when denom_ is one
+	explicit constexpr operator int() const
+	{
+		assert(denom_ == 1);
+		return int(num_);
+	}
+
+	// Arithmetic operators. Even though the non-assigning operators call
+	// the constructor with the assert, that assert can never be triggered,
+	// hence the operators are noexcept.
 	
-	friend Fraction operator+(const Fraction& lhs, const Fraction& rhs);
-	friend Fraction operator-(const Fraction& lhs, const Fraction& rhs);
-	friend Fraction operator*(const Fraction& lhs, const Fraction& rhs);
+	friend Fraction operator+(const Fraction& lhs, const Fraction& rhs) noexcept;
+	friend Fraction operator-(const Fraction& lhs, const Fraction& rhs) noexcept;
+	friend Fraction operator*(const Fraction& lhs, const Fraction& rhs) noexcept;
+	friend Fraction& operator+=(Fraction& lhs, const Fraction& rhs) noexcept;
+	friend Fraction& operator-=(Fraction& lhs, const Fraction& rhs) noexcept;
+	friend Fraction& operator*=(Fraction& lhs, const Fraction& rhs) noexcept;
 
 	// Equality operators
 	friend bool operator==(const Fraction& lhs, const Fraction& rhs) noexcept

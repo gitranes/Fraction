@@ -64,5 +64,20 @@ namespace FractionTest
 		Fraction one(1);
 		const auto half2 = 1 * half;
 		ASSERT_EQ(half, half2);
-}
+	}
+
+	TEST_F(FractionTest, AssignTest)
+	{
+		auto half = half_;
+		half += half;
+		ASSERT_EQ(1, half);
+
+		auto quarter = quarter_;
+		quarter -= half_;
+		ASSERT_EQ(Fraction(-1, 4), quarter);
+
+		auto one_sixth = one_sixth_;
+		one_sixth *= one_sixth;
+		ASSERT_EQ(Fraction(1, 36), one_sixth);
+	}
 }
