@@ -56,7 +56,12 @@ Fraction& operator*=(Fraction& lhs, const Fraction& rhs) noexcept
 
 std::ostream& operator<<(std::ostream& os, const Fraction& obj)
 {
-	return os << obj.num_ << "/" << obj.denom_ << std::endl;
+	if (obj.denom_ == 1)
+	{
+		// Return as an integer
+		return os << obj.num_;
+	}
+	return os << obj.num_ << "/" << obj.denom_;
 }
 
 void Fraction::simplify() noexcept
